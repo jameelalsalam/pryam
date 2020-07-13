@@ -2,22 +2,28 @@
 
 library(reticulate)
 library(tidyverse)
+devtools::load_all(".") # {pryam dev}
 
 # locating conda and/or python version is user-specific
-# include code in your .Rprofile file to help find conda and/or python as appropriate.
+# include code in your .Rprofile file to help find conda and/or python as appropriate. .Rprofile is git-ignored so that user-specific configuration is not shared via git.
 # https://rstudio.github.io/reticulate/reference/conda-tools.html
 # https://rstudio.github.io/reticulate/articles/versions.html
 
 
-# Q: does this work if conda env 'pryam' not already created? could it use the common 'r-reticulate' env?
+# Q: does this work if conda env 'r-reticulate' not already created? I believe not, because there is no numpy in it.
 # Q: how to make this part cross-platform?
-use_condaenv(condaenv = "pryam")
+use_condaenv(condaenv = "r-reticulate")
 
-# install pyam and dependencies in conda env
-reticulate::conda_install(
-  envname = "pryam",
-  package = c("pyam")
-)
+py_config()
+
+# to run py_config(), reticulate needs an appropriate environment with at least numpy. Without even numpy, I get errors.
+
+# now the general part...
+
+if(!py_module_available("pyam")) {
+  # in user-specified or reticulate identified environment
+  py_install("pyam")
+}
 
 pyam <- import("pyam")
 
