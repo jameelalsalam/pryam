@@ -1,3 +1,6 @@
+^renv$
+^renv\.lock$
 ^pryam\.Rproj$
 ^\.Rproj\.user$
 ^scripts$
+^\.github$
