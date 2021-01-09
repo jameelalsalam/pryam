@@ -10,9 +10,17 @@ Authors@R:
 Description: What the package does (one paragraph).
 License: `use_mit_license()`, `use_gpl3_license()` or friends to
     pick a license
+Imports: 
+    reticulate (>= 1.14)
+Suggests: 
+    rmarkdown
+Config/reticulate:
+    list(
+      packages = list( 
+        list(package = "pyam")
+      )
+    )
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
-Imports: 
-    reticulate
