@@ -1,0 +1,62 @@
+---
+title: "First steps with the pryam package"
+---
+
+This article demonstrates some of the operations from the first steps tutorial from the pyam package, *but from R*.
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(tidyverse)
+library(pryam) #devtools::load_all(".")
+```
+
+```{r}
+df <- pyam_data_frame(system.file("extdata", "pyam", "tutorial_data.csv", package = "pryam"))
+```
+
+Printing:
+```{r}
+df
+```
+
+Index values:
+```{r}
+df$models()
+```
+
+```{r}
+df$scenarios()
+```
+
+```{r}
+df$scenarios()
+```
+
+```{r}
+df$regions()
+```
+
+```{r}
+df$variables(include_units = TRUE)
+```
+
+## Apply filters to the ensemble and display the timeseries data
+
+```{r}
+df$filter(model = "MESSAGE")$scenarios()
+```
+
+```{r}
+df$filter(model = "MESSAGE*")$scenarios()
+```
+
+```{r}
+df$filter(region = "World", keep = FALSE)$regions()
+```
+
