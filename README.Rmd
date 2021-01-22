@@ -1,0 +1,72 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# pryam
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of pryam is to provide an interface via reticulate to the excellent Python package [pyam](https://pyam-iamc.readthedocs.io/), which is used for analyzing and working with data in the data format used by IAMC and EMF model intercomparison studies. 
+
+## Installation
+
+You can install the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("jameelalsalam/pryam")
+```
+
+If you have never used or installed Python, reticulate can take care of the details of Python installation and environment setup. The first time you load and use pryam, it should prompt you to install miniconda, and will prepare a suitable Python environment called 'r-reticulate' including the pyam package. This approach should allow multiple reticulate-based R packages to use a common Python environment.
+
+If you already have Python installed (perhaps multiple versions), it may be best to ensure that reticulate is using the appropriate version of Python.
+
+```{r}
+library(reticulate)
+library(pryam)
+
+# To examine Python configuration and manually install pyam:
+# reticulate::py_discover_config()
+# reticulate::py_install("pyam")
+```
+
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(pryam)
+
+df <- pyam_data_frame(system.file("extdata", "pyam", "tutorial_data.csv", package = "pryam"))
+```
+
+At this time, IamDataFrames returned by pyam remain as references to Python objects (because they have no unambiguous representation in standard R data types), while simpler data structures (such as listings of models or variables included) are converted to their R counterparts, such as character vectors.
+
+```{r printing}
+df
+```
+
+```{r}
+df$model
+```
+
+Call pyam methods on Python/pyam objects using `$` instead of `.` as in Python code. Properties are retrieved without parenthesis, while methods are called as functions.
+
+```{r}
+df$variables(include_units = TRUE)
+```
+
+
