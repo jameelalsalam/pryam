@@ -6,8 +6,8 @@ pyam <- NULL
 .onLoad <- function(libname, pkgname) {
   reticulate::configure_environment(pkgname)
 
-  # use superassignment to update global reference to pyan
-  pyam <<- reticulate::import("pyam", delay_load = TRUE, convert = FALSE)
+  # use superassignment to update global reference to pyam
+  pyam <<- reticulate::import("pyam", delay_load = TRUE, convert = TRUE)
 }
 
 have_pyam <- function() {

@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(tidyverse)
-library(pryam) #devtools::load_all(".")
+library(pryam)
 ```
 
 ```{r}
@@ -27,19 +27,19 @@ df
 
 Index values:
 ```{r}
-df$models()
+df$model
 ```
 
 ```{r}
-df$scenarios()
+df$scenario
 ```
 
 ```{r}
-df$scenarios()
+df$scenario
 ```
 
 ```{r}
-df$regions()
+df$region
 ```
 
 ```{r}
@@ -49,14 +49,30 @@ df$variables(include_units = TRUE)
 ## Apply filters to the ensemble and display the timeseries data
 
 ```{r}
-df$filter(model = "MESSAGE")$scenarios()
+df$filter(model = "MESSAGE")$scenario
 ```
 
 ```{r}
-df$filter(model = "MESSAGE*")$scenarios()
+df$filter(model = "MESSAGE*")$scenario
 ```
 
 ```{r}
-df$filter(region = "World", keep = FALSE)$regions()
+df$filter(region = "World", keep = FALSE)$region
+```
+
+## Filtering by variables and levels
+
+```{r}
+df$filter(variable='Primary Energy*', level=1)$variable
+```
+
+```{r}
+df$filter(variable='Primary Energy*', level='1-')$variable
+```
+
+## Visualize the timeseries data using the plotting library
+
+```{python}
+r.df.filter(variable='Emissions|CO2', region='World').plot()
 ```
 
