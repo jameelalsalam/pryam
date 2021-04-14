@@ -16,7 +16,8 @@ Suggests:
 Config/reticulate:
     list(
       packages = list( 
-        list(package = "pyam")
+        list(package = "pyam"),
+        list(package = "matplotlib")
       )
     )
 Encoding: UTF-8
