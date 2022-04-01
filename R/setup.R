@@ -10,10 +10,12 @@ pyam <- NULL
   pyam <<- reticulate::import("pyam", delay_load = TRUE, convert = TRUE)
 }
 
+#' @export
 have_pyam <- function() {
   reticulate::py_module_available("pyam")
 }
 
+#' @export
 install_pyam <- function(method = "auto", conda = "auto") {
   reticulate::py_install("pyam", method = method, conda = conda)
 }

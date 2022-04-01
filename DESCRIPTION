@@ -1,11 +1,11 @@
 Package: pryam
 Title: An R Interface to pyam
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Jameel",
+           family = "Alsalam",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
+           email = "jalsalam@gmail.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: Provides an R interface to the Python package pyam.
 License: Apache License (>= 2)
@@ -16,11 +16,11 @@ Suggests:
 Config/reticulate:
     list(
       packages = list( 
-        list(package = "pyam"),
+        list(package = "pyam", pip = FALSE),
         list(package = "matplotlib")
       )
     )
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
