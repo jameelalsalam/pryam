@@ -16,6 +16,6 @@ have_pyam <- function() {
 }
 
 #' @export
-install_pyam <- function(method = "auto", conda = "auto") {
-  reticulate::py_install("pyam", method = method, conda = conda)
+install_pyam <- function(method = "conda", conda = "auto", channel = "conda-forge") {
+  reticulate::py_install("pyam", method = method, conda = conda, channel = channel)
 }
